@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Birthday Surprise 🎂</title>
+  <link rel="stylesheet" href="photos.css" />
 
   <style>
     :root {
@@ -303,99 +304,6 @@
       margin: 26px 0 18px;
     }
 
-    .photo-strip,
-    .photo-gallery,
-    .gallery-grid {
-      display: grid;
-      gap: 12px;
-      margin: 20px auto 18px;
-      width: min(100%, 620px);
-    }
-
-    .photo-strip {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .photo-gallery,
-    .gallery-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .photo-card {
-      background: rgba(255, 255, 255, .82);
-      border: 1px solid rgba(195, 118, 90, .28);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 10px 22px rgba(22, 18, 38, .12);
-      text-align: left;
-    }
-
-    #messagePage .photo-gallery {
-      width: min(100%, 560px);
-      grid-template-columns: 1fr;
-    }
-
-    #messagePage .photo-gallery .photo-card {
-      height: 360px;
-    }
-
-    .photo-card img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 8%;
-      transform: scale(1.08) translateY(-5px);
-    }
-
-    .photo-card.photo1 img { object-position: center 14%; }
-    .photo-card.photo2 img { object-position: center 7%; }
-    .photo-card.photo3 img { object-position: center 10%; }
-    .photo-card.photo4 img { object-position: center 5%; }
-    .photo-card.photo5 img { object-position: center 9%; }
-
-    #messagePage .photo-card.photo3 img { object-position: center 18%; }
-    #messagePage .photo-card.photo4 img { object-position: center 14%; }
-    #wishPage .photo-card.photo5 img { object-position: center 12%; }
-    #wishPage .photo-card.photo2 img { object-position: center 6%; }
-    #memoriesPage .photo-card.photo4 img { object-position: center 4%; }
-    #memoriesPage .photo-card.photo5 img { object-position: center 10%; }
-    #memoriesPage .photo-card.photo3 img { object-position: center 3%; }
-    #memoriesPage .photo-card.photo1 img { object-position: center 12%; }
-    #galleryPage .photo-card.photo2 img { object-position: center 6%; }
-    #galleryPage .photo-card.photo4 img { object-position: center 3%; }
-    #galleryPage .photo-card.photo3 img { object-position: center 8%; }
-    #galleryPage .photo-card.photo5 img { object-position: center 10%; }
-    #finalPage .photo-card.photo1 img { object-position: center 12%; }
-    #finalPage .photo-card.photo5 img { object-position: center 7%; }
-    #finalPage .photo-card.photo2 img { object-position: center 4%; }
-
-    .photo-card.photo3,
-    .photo-card.photo1,
-    .photo-card.photo2,
-    .photo-card.photo4,
-    .photo-card.photo5 {
-      height: 240px;
-      width: 100%;
-    }
-
-    .photo-card figcaption {
-      display: none;
-    }
-
-    .gallery-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      width: min(100%, 710px);
-    }
-
-    .gallery-grid .photo-card {
-      height: 220px;
-    }
-
-    .gallery-grid .photo-card img {
-      height: 100%;
-    }
-
     .memory {
       min-height: 126px;
       padding: 15px 10px;
@@ -491,6 +399,15 @@
       <button id="musicButton" onclick="toggleMusic()" aria-pressed="false">🎵 Play the birthday song</button>
       <span class="music-status" id="musicStatus" aria-live="polite">Song ready</span>
 
+      <div class="photo-album birthday-photos" aria-label="Aayush's birthday photos">
+        <figure class="photo-card photo1">
+          <img src="photo1.jpg" alt="Aayush smiling outdoors" />
+        </figure>
+        <figure class="photo-card photo2">
+          <img src="photo2.jpg" alt="Aayush standing in a garden" />
+        </figure>
+      </div>
+
       <button onclick="showPage('messagePage')">Open Your Special Letter 💌</button>
     </div>
   </section>
@@ -510,6 +427,15 @@
       </p>
 
       <p><b>The world is brighter because you are in it. 💖</b></p>
+
+      <div class="photo-album letter-photos" aria-label="Aayush's favorite photos">
+        <figure class="photo-card photo3">
+          <img src="photo3.jpg" alt="Aayush beside the sea" />
+        </figure>
+        <figure class="photo-card photo4">
+          <img src="photo4.jpeg" alt="Aayush on a bridge" />
+        </figure>
+      </div>
 
       <button onclick="showPage('wishPage')">Make One Beautiful Wish 🌟</button>
     </div>
@@ -533,6 +459,15 @@
       <div class="wish-box" id="wishBox">
         Your wish has been sent to the stars. ✨<br>
         May it find its way back to you. 💫
+      </div>
+
+      <div class="photo-album wish-photos" aria-label="Aayush's celebration photo">
+        <figure class="photo-card photo5">
+          <img src="photo5.jpeg" alt="Aayush by the sea at sunset" />
+        </figure>
+        <figure class="photo-card photo6">
+          <img src="photo6.jpeg" alt="Aayush's special birthday memory" />
+        </figure>
       </div>
 
       <button onclick="showPage('memoriesPage')">Keep Exploring ✦</button>
@@ -559,21 +494,7 @@
     </div>
   </section>
 
-  <!-- Page 6: Photo gallery -->
-  <section class="page" id="galleryPage">
-    <div class="lights"></div>
-
-    <div class="card">
-      <div style="font-size:64px">📸💫</div>
-      <div class="eyebrow">A private little album</div>
-      <h2>Look at all the light</h2>
-      <p>Every smile, every sparkle, and every tiny joy deserves a spot in the memory book.</p>
-
-      <button onclick="showPage('finalPage')">To the Final Toast 🥂</button>
-    </div>
-  </section>
-
-  <!-- Page 7: Final toast -->
+  <!-- Page 6: Final toast -->
   <section class="page" id="finalPage">
     <div class="lights"></div>
 
@@ -610,7 +531,15 @@
         page.classList.remove("active");
       });
 
-      document.getElementById(pageId).classList.add("active");
+      const nextPage = document.getElementById(pageId);
+      nextPage.classList.add("active");
+
+      nextPage.querySelectorAll(".photo-card").forEach((photo, index) => {
+        photo.style.animation = "none";
+        void photo.offsetWidth;
+        photo.style.animation = "";
+        photo.style.animationDelay = `${index * .35}s`;
+      });
     }
 
     function toggleMusic() {
